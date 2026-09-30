@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Sign in · BRICS AIRWATCH{% endblock %}
+{% block body %}
+<div class="login">
+  <div class="panel corner">
+    <a class="brand" href="/"><span class="brand-mark"></span><span><b>AIRWATCH</b><small>SECURE ACCESS</small></span></a>
+    <form method="post" style="display:grid;gap:14px;margin-top:10px">{% csrf_token %}
+      {% if form.errors %}<div class="banner" style="color:#fca5a5;border-color:rgba(239,68,68,.4)">Invalid username or password.</div>{% endif %}
+      <div class="field"><label>Username</label><input class="inp" name="username" autocomplete="username" required></div>
+      <div class="field"><label>Password</label><input class="inp" type="password" name="password" autocomplete="current-password" required></div>
+      <input type="hidden" name="next" value="{{ next }}">
+      <button class="btn primary">Sign in</button>
+    </form>
+    <p class="dim mono" style="font-size:11px;margin-top:18px;line-height:1.8">DEMO ACCOUNTS<br>authority / authority123 — alert actions<br>citizen / citizen123 — reporting<br>admin / admin12345 — Django admin</p>
+  </div>
+</div>
+{% endblock %}

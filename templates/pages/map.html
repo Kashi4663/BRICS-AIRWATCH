@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="map-wrap" id="map-page" data-focus="{{ key_hotspot }}">
+  <div class="map" id="live-map"></div>
+  <div class="scan" id="scan"></div>
+  <div class="map-layers" id="layers">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span class="eyebrow">Metric</span><span class="badge-src demo">DEMO</span></div>
+    <div class="grp" data-metric>
+      <span class="chip on" data-m="aqi">AQI</span><span class="chip" data-m="pm25">PM2.5</span><span class="chip" data-m="pm10">PM10</span><span class="chip" data-m="no2">NO2</span><span class="chip" data-m="so2">SO2</span><span class="chip" data-m="co">CO</span>
+    </div>
+    <div class="eyebrow" style="margin-top:12px">Layers <a href="#" class="accent" id="more-layers" style="float:right;font-size:10px">+</a></div>
+    <div class="grp adv" data-layers>
+      <span class="chip on" data-l="heat">Heatmap</span><span class="chip on" data-l="fire">Fire</span><span class="chip on" data-l="industrial">Industrial</span><span class="chip on" data-l="reports">Citizen Reports</span><span class="chip on" data-l="wind">Wind</span><span class="chip" data-l="satellite">Satellite</span><span class="chip on" data-l="forecast">Forecast</span><span class="chip on" data-l="plume">Plume</span>
+    </div>
+  </div>
+  <div class="map-legend"><div>METRIC · <span id="legend-metric">AQI</span></div><div class="scale"></div><div class="ticks"><span>Low</span><span>Moderate</span><span>High</span><span>Critical</span></div>
+    <div style="margin-top:8px;display:flex;gap:12px;flex-wrap:wrap"><span><span class="fire-marker" style="display:inline-block"></span> Fire</span><span><span class="rep-marker" style="display:inline-block"></span> Report</span><span style="color:#93c5fd">➤ Wind</span><span class="accent">- - Predicted</span></div></div>
+  <aside class="hot-panel" id="hot-panel"></aside>
+</div>
+{% endblock %}

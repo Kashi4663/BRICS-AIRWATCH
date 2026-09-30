@@ -1,0 +1,70 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>{% block title %}{{ page_title|default:"BRICS AIRWATCH" }} · BRICS AIRWATCH{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="{% static 'css/airwatch.css' %}">
+{% block head %}{% endblock %}
+</head>
+<body data-page="{{ page|default:'' }}" data-role="{{ USER_ROLE }}">
+{% include "components/icons.html" %}
+{% block body %}
+<div class="shell">
+  <aside class="side">
+    <a class="brand" href="{% url 'landing' %}"><span class="brand-mark"></span><span><b>AIRWATCH</b><small>BRICS · CLIMATE INTEL</small></span></a>
+    <nav class="nav">
+      {% for slug, label, icon in NAV %}
+      <a href="/{{ slug }}/" class="{% if page == slug %}on{% endif %}"><svg><use href="#i-{{ icon }}"/></svg>{{ label }}</a>
+      {% endfor %}
+      <a href="/settings/" class="{% if page == 'settings' %}on{% endif %}"><svg><use href="#i-cog"/></svg>Settings</a>
+      <a href="/report/" class="report-cta"><svg><use href="#i-plus"/></svg>REPORT POLLUTION</a>
+    </nav>
+    <div class="side-foot">
+      <div><span>SYSTEM STATUS</span><span><i class="dot"></i> NOMINAL</span></div>
+      <div><span>API STATUS</span><span id="api-status"><i class="dot w"></i> DEMO</span></div>
+      <div><span>DEMO MODE</span><span class="{% if DEMO_MODE %}c-warn{% else %}c-ok{% endif %}">{% if DEMO_MODE %}ON{% else %}PARTIAL LIVE{% endif %}</span></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="top">
+      <h1>{{ page_title }}</h1>
+      <span class="demo-pill">DEMO ENVIRONMENT</span>
+      <div class="search"><svg><use href="#i-search"/></svg><input id="global-search" placeholder="Search hotspot ID, city, region…" autocomplete="off"></div>
+      <div class="top-meta">
+        <span class="date" id="clock">{{ NOW|date:"D d M Y · H:i" }} IST</span>
+        <a class="icon-btn" href="/alerts/" title="Notifications"><svg><use href="#i-bell"/></svg><span class="badge" id="notif-count">·</span></a>
+        {% if user.is_authenticated %}
+          <a class="avatar" href="/settings/" title="{{ user.username }} · {{ USER_ROLE }}">{{ user.username|slice:":2"|upper }}</a>
+        {% else %}
+          <a class="btn sm" href="{% url 'login' %}?next={{ request.path }}">Sign in</a>
+        {% endif %}
+      </div>
+    </header>
+    <section class="content">
+      {% block content %}{% endblock %}
+    </section>
+  </main>
+</div>
+<nav class="mnav">
+  {% for slug, label, icon in MOBILE_NAV %}
+  <a href="/{{ slug }}/" class="{% if page == slug %}on{% endif %} {% if slug == 'report' %}big{% endif %}">
+    {% if slug == 'report' %}<span class="plus"><svg><use href="#i-plus"/></svg></span>{% else %}<svg><use href="#i-{{ icon }}"/></svg>{% endif %}{{ label }}</a>
+  {% endfor %}
+</nav>
+{% if page != 'assistant' %}
+<button class="fab" id="fab" aria-label="Open AIRWATCH AI"><span class="orb"></span><span class="lbl">AIRWATCH AI</span></button>
+<div class="chat" id="chat-float">{% include "components/chat.html" %}</div>
+{% endif %}
+{% endblock %}
+{% csrf_token %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="{% static 'js/app.js' %}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

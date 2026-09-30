@@ -1,0 +1,13 @@
+Django>=5.0,<5.3
+djangorestframework>=3.15
+python-dotenv>=1.0
+requests>=2.31
+Pillow>=10.0
+# Optional Google integrations (install when configuring LIVE mode):
+# google-cloud-aiplatform   # Vertex AI
+# earthengine-api           # Google Earth Engine
+# google-cloud-bigquery     # BigQuery
+# firebase-admin            # Firebase
+# Production server (Cloud Run)
+gunicorn>=22.0
+whitenoise>=6.6

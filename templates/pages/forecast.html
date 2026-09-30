@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between">
+  <div><div class="eyebrow">Forecast target</div><h2 id="fc-title" style="font-size:22px;margin-top:4px">—</h2></div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><select class="inp mono" id="fc-city" style="width:220px"><option value="">{{ key_hotspot }} (hotspot)</option></select><span class="badge-src sim" id="fc-label">SIMULATED PREDICTION</span></div>
+</div>
+<div class="horizons" id="horizons"></div>
+<div class="grid g-main">
+  <div class="panel"><div class="panel-h"><h3>AQI · PM2.5 · PM10 — 48 h</h3><span class="badge-src sim" data-model>MOCK MODEL</span></div><div class="panel-b"><div class="chart-box" style="height:300px"><canvas id="fc-main"></canvas></div></div></div>
+  <div class="panel"><div class="panel-h"><h3>Pollution Spike Probability</h3></div><div class="panel-b" id="spike"></div>
+    <div class="panel-b" style="border-top:1px solid var(--line2)"><div class="eyebrow">Model inputs (Vertex AI-ready)</div><div class="ev-tags" id="fc-features" style="margin-top:8px"></div></div></div>
+</div>
+<div class="grid g3">
+  <div class="panel"><div class="panel-h"><h3>Temperature °C</h3></div><div class="panel-b"><div class="chart-box sm"><canvas id="fc-temp"></canvas></div></div></div>
+  <div class="panel"><div class="panel-h"><h3>Humidity %</h3></div><div class="panel-b"><div class="chart-box sm"><canvas id="fc-hum"></canvas></div></div></div>
+  <div class="panel"><div class="panel-h"><h3>Wind speed km/h</h3></div><div class="panel-b"><div class="chart-box sm"><canvas id="fc-wind"></canvas></div></div></div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="banner"><b>DEMO DATA</b> 90-day synthetic climate &amp; air-quality record across BRICS demo cities.</div>
+<div class="grid g2">
+  <div class="panel"><div class="panel-h"><h3>Country Mean AQI · 90 days</h3></div><div class="panel-b"><div class="chart-box"><canvas id="an-country"></canvas></div></div></div>
+  <div class="panel"><div class="panel-h"><h3>Hotspot Source Categories</h3></div><div class="panel-b"><div class="chart-box"><canvas id="an-sources"></canvas></div></div></div>
+  <div class="panel"><div class="panel-h"><h3>Status Distribution</h3></div><div class="panel-b"><div class="chart-box"><canvas id="an-status"></canvas></div></div></div>
+  <div class="panel"><div class="panel-h"><h3>Fire Activity vs AQI (India)</h3></div><div class="panel-b"><div class="chart-box"><canvas id="an-fire"></canvas></div></div></div>
+</div>
+{% endblock %}

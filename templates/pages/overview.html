@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="banner"><b>DEMO ENVIRONMENT</b> All figures are synthetic demo data generated for this prototype — not official government measurements.</div>
+<div class="metrics" id="metrics">{% for i in "123456" %}<div class="metric"><div class="skel" style="width:60%"></div><div class="skel" style="height:34px;margin-top:10px"></div></div>{% endfor %}</div>
+<div class="grid g-main">
+  <div class="panel corner">
+    <div class="panel-h"><h3>Global Intelligence Map</h3><div style="display:flex;gap:8px"><span class="badge-src demo">DEMO DATA</span><a class="btn sm" href="/map/">Open live map →</a></div></div>
+    <div style="position:relative;height:430px"><div class="map" id="ov-map"></div><div class="scan on" style="opacity:.35"></div></div>
+  </div>
+  <div class="panel">
+    <div class="panel-h"><h3>Activity Stream</h3><span class="eyebrow"><i class="dot a"></i> STREAMING</span></div>
+    <div class="panel-b" style="max-height:430px;overflow:auto"><div class="feed" id="feed"></div></div>
+  </div>
+</div>
+<div class="grid g-main">
+  <div class="panel">
+    <div class="panel-h"><h3>India Network · AQI / PM2.5 · 24 h</h3><span class="badge-src demo">DEMO DATA</span></div>
+    <div class="panel-b"><div class="chart-box"><canvas id="ov-trend"></canvas></div></div>
+  </div>
+  <div class="panel">
+    <div class="panel-h"><h3>BRICS Nations</h3><span class="badge-src sim">FEDERATED DEMO</span></div>
+    <div class="panel-b" id="countries"></div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-h"><h3>Priority Hotspots</h3><a class="btn sm" href="/hotspots/">All hotspots →</a></div>
+  <div class="panel-b"><div class="hcards" id="top-hotspots"></div></div>
+</div>
+{% endblock %}

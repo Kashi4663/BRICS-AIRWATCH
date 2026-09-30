@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+  <div><div class="eyebrow">Citizen observation network</div><h2 style="font-size:26px;margin-top:4px"><span id="rp-total">—</span> reports</h2></div>
+  <a class="btn primary" href="/report/"><svg><use href="#i-plus"/></svg>Report pollution</a>
+</div>
+<div class="grid g-main">
+  <div class="panel"><div class="panel-h"><h3>Latest Reports</h3><span class="badge-src demo">DEMO + USER SUBMISSIONS</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>ID</th><th>Type</th><th>Location</th><th>AI assessment</th><th>Status</th><th>Time</th></tr></thead><tbody id="rp-rows"></tbody></table></div></div>
+  <div class="panel"><div class="panel-h"><h3>By Type</h3></div><div class="panel-b"><div class="chart-box"><canvas id="rp-types"></canvas></div></div></div>
+</div>
+{% endblock %}

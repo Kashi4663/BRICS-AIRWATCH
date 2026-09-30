@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+  <div class="chips" id="hs-country"><span class="chip on" data-c="">All</span><span class="chip" data-c="IN">India</span><span class="chip" data-c="BR">Brazil</span><span class="chip" data-c="RU">Russia</span><span class="chip" data-c="CN">China</span><span class="chip" data-c="ZA">South Africa</span></div>
+  <div class="chips" id="hs-status"><span class="chip on" data-s="">Any status</span><span class="chip" data-s="CRITICAL">Critical</span><span class="chip" data-s="HIGH">High</span><span class="chip" data-s="MODERATE">Moderate</span></div>
+</div>
+<div class="grid g-side">
+  <div class="panel"><div class="panel-h"><h3>Active Hotspots · <span id="hs-count">—</span></h3><span class="badge-src demo">DEMO DATA</span></div><div class="panel-b"><div class="hcards" id="hs-list"></div></div></div>
+  <div class="panel corner" id="hs-detail"><div class="panel-h"><h3>Evidence Chain</h3></div><div class="panel-b dim">Select a hotspot.</div></div>
+</div>
+{% endblock %}

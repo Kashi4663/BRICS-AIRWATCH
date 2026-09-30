@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="report-shell" id="report-page">
+  <div style="margin-bottom:6px"><div class="eyebrow accent">CITIZEN OBSERVATION</div><h2 style="font-size:28px;margin-top:6px">REPORT POLLUTION</h2><p class="muted" style="font-size:13px">Your photo and description are analysed by AI and cross-checked with sensors, weather and satellite data. Reports are assessments until verified.</p></div>
+  <form id="report-form" class="panel corner" enctype="multipart/form-data" novalidate>
+    <div class="panel-b" style="display:grid;gap:18px">
+      <div class="capture">
+        <label class="cap-btn" id="cap-upload"><svg><use href="#i-upload"/></svg>Upload Image<input type="file" name="image" accept="image/jpeg,image/png,image/webp" id="img-input"></label>
+        <label class="cap-btn" id="cap-camera"><svg><use href="#i-camera"/></svg>Use Camera<input type="file" accept="image/*" capture="environment" id="cam-input"></label>
+        <button type="button" class="cap-btn" id="cap-voice"><svg><use href="#i-mic"/></svg><span id="voice-lbl">Speak Report</span></button>
+      </div>
+      <div class="preview" id="preview"><img id="preview-img" alt="Selected pollution photo"></div>
+      <div class="field"><label>Voice language</label>
+        <select class="inp" id="lang" name="language">{% for code, name, bcp in languages %}<option value="{{ code }}" data-bcp="{{ bcp }}">{{ name }}</option>{% endfor %}</select>
+      </div>
+      <div id="voice-box" style="display:none" class="panel"><div class="panel-b" style="display:grid;gap:8px">
+        <div class="eyebrow">VOICE PIPELINE · <span id="voice-mode">BROWSER SPEECH-TO-TEXT</span></div>
+        <div class="traj" id="voice-pipe"><span>Voice</span><i>→</i><span>Speech-to-Text</span><i>→</i><span>Translation</span><i>→</i><span>Intent</span><i>→</i><span>Report</span><i>→</i><span>Location</span></div>
+        <div class="mono" style="font-size:12px" id="voice-out"></div>
+      </div></div>
+      <div class="field"><label>Pollution type</label>
+        <div class="chips" id="ptype">
+          <span class="chip" data-v="smoke">Smoke</span><span class="chip" data-v="dust">Dust</span><span class="chip" data-v="industrial">Industrial emission</span><span class="chip" data-v="crop_burning">Crop burning</span><span class="chip" data-v="garbage_burning">Garbage burning</span><span class="chip on" data-v="unknown">Unknown</span>
+        </div>
+      </div>
+      <div class="field"><label>Location</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><input class="inp mono" id="loc-label" name="location_label" placeholder="Auto detected / manually selected" style="flex:1;min-width:200px"><button type="button" class="btn" id="geo-btn"><svg><use href="#i-pin"/></svg>Detect</button></div>
+        <div style="position:relative;height:200px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:6px"><div class="map" id="loc-map"></div></div>
+        <span class="dim mono" style="font-size:11px" id="loc-coords">Tap the map to set location · default: Ankleshwar demo area</span>
+      </div>
+      <div class="field"><label>Description</label><textarea class="inp" name="description" id="desc" rows="3" maxlength="1000" placeholder="What do you see or smell? When did it start?"></textarea></div>
+      <button class="btn primary submit-big" id="submit-btn">SUBMIT REPORT</button>
+      <div class="dim" style="font-size:11px">Max image size 5 MB · JPG / PNG / WEBP · Photos are stored securely and used only for pollution assessment.</div>
+    </div>
+  </form>
+  <div class="panel corner" id="proc-panel" style="display:none;margin-top:18px"><div class="panel-h"><h3>AI Processing</h3><span class="badge-src ai">MULTI-SOURCE</span></div><div class="panel-b"><div class="proc" id="proc"></div></div></div>
+  <div id="assessment" style="margin-top:18px"></div>
+</div>
+{% endblock %}

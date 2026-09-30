@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid g-side">
+  <div class="chat inline panel" id="chat-inline">{% include "components/chat.html" %}</div>
+  <div class="panel"><div class="panel-h"><h3>Assistant grounding</h3></div><div class="panel-b" style="font-size:13px;display:grid;gap:10px">
+    <p class="muted">AIRWATCH AI answers from the platform dataset (hotspots, alerts, forecasts, cross-border events).</p>
+    <p class="muted">With <span class="mono accent">GEMINI_API_KEY</span> set, answers come from Gemini grounded on that JSON context. Without it, a deterministic demo responder is used.</p>
+    <div class="traj"><span>Question</span><i>→</i><span>Context retrieval</span><i>→</i><span class="t">Gemini / Mock</span><i>→</i><span>Hedged answer</span></div>
+    <button class="btn" id="tts-btn" type="button">Read last answer aloud</button>
+  </div></div>
+</div>
+{% endblock %}

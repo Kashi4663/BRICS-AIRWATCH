@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}BRICS AIRWATCH · Federated AI Climate & Pollution Intelligence{% endblock %}
+{% block body %}
+<div class="landing" data-landing>
+  <div class="grid-bg"></div>
+  <header class="l-top">
+    <a class="brand" style="border:none;margin:0;padding:0" href="/"><span class="brand-mark"></span><span><b>BRICS AIRWATCH</b><small>FEDERATED AI CLIMATE &amp; POLLUTION INTELLIGENCE</small></span></a>
+    <nav><a href="/overview/">Platform</a><a href="/map/">Live Map</a><a href="/forecast/">Forecast</a><a href="/cross-border/">Federated</a><a href="/settings/">Architecture</a></nav>
+    <span class="demo-pill">DEMO ENVIRONMENT</span>
+  </header>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="tagline">LIVE CLIMATE INTELLIGENCE</div>
+      <h1>SEE POLLUTION<br>BEFORE IT <em>SPREADS.</em></h1>
+      <p>AI-powered climate intelligence combining citizen observations, satellite data, sensors and meteorological intelligence.</p>
+      <div class="ctas">
+        <a class="btn primary" href="/overview/">OPEN INTELLIGENCE CENTER</a>
+        <a class="btn" href="/report/"><svg><use href="#i-camera"/></svg>REPORT POLLUTION</a>
+      </div>
+      <div class="eyebrow" style="margin-top:36px;letter-spacing:.3em">FEDERATED • MULTIMODAL • PREDICTIVE</div>
+      <p class="dim" style="font-size:11px;margin-top:12px;font-family:var(--mono)">Prototype running on synthetic demo data. No live government feeds are connected unless configured.</p>
+    </div>
+    <div class="hero-viz">
+      <div class="map" id="hero-map"></div>
+      <div class="hud tl"><span class="accent">●</span> BRICS NETWORK · 5 NATIONS</div>
+      <div class="hud tr" id="hero-count">EVENTS · —</div>
+      <div class="hud br"><span class="c-warn">DEMO DATA</span> · SIMULATED EVENT STREAM</div>
+    </div>
+  </section>
+  <section class="l-stats">
+    <div><b id="ls-hot">27</b><span>Active hotspots in demo network</span></div>
+    <div><b>6</b><span>Evidence sources fused per event</span></div>
+    <div><b>48 h</b><span>Forecast horizon (simulated model)</span></div>
+    <div><b>9</b><span>Languages for voice reporting</span></div>
+  </section>
+  <section class="l-sec">
+    <div><span class="eyebrow accent">01 · SENSE</span><h3>Citizen + sensor + satellite</h3><p>Photo and voice reports are fused with sensor anomalies, satellite observations and weather to reveal hyper-local hotspots city monitors miss.</p></div>
+    <div><span class="eyebrow accent">02 · INVESTIGATE</span><h3>AI agent with evidence chain</h3><p>Gemini-powered agents assemble a transparent evidence chain. Every conclusion is an assessment awaiting authority verification.</p></div>
+    <div><span class="eyebrow accent">03 · PREDICT</span><h3>Forecast the spike</h3><p>Vertex AI-ready models project AQI, spike probability and plume movement along economic corridors.</p></div>
+    <div><span class="eyebrow accent">04 · FEDERATE</span><h3>Share models, not raw data</h3><p>A federated architecture where each nation keeps its data sovereign and only standardised intelligence is exchanged.</p></div>
+  </section>
+  <footer class="l-foot"><span>BRICS AIRWATCH · PROTOTYPE</span><span>Django · Gemini · Vertex AI · Earth Engine · BigQuery · Firebase</span></footer>
+</div>
+{% endblock %}

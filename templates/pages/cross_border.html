@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="banner"><b>FEDERATED ARCHITECTURE DEMONSTRATION</b> This prototype does not exchange data between BRICS countries. Countries, models and trajectories shown are simulated.</div>
+<div class="grid g-main">
+  <div class="panel corner"><div class="panel-h"><h3>BRICS Trajectory Map</h3><span class="badge-src sim">SIMULATED PREDICTION</span></div><div style="position:relative;height:440px"><div class="map" id="xb-map"></div></div></div>
+  <div class="panel"><div class="panel-h"><h3>Cross-Border Events</h3></div><div class="panel-b" id="xb-events" style="display:flex;flex-direction:column;gap:14px"></div></div>
+</div>
+<div class="panel"><div class="panel-h"><h3>Country Intelligence Nodes</h3></div><div class="tbl-wrap"><table class="tbl" id="xb-table"><thead><tr><th>Country</th><th class="num">Active events</th><th class="num">Predicted</th><th class="num">Mean AQI</th><th>Shared model status</th><th>Cross-border risk</th></tr></thead><tbody></tbody></table></div></div>
+<div class="panel"><div class="panel-h"><h3>Federated AI Concept</h3><span class="badge-src">CONCEPTUAL</span></div>
+  <div class="panel-b fed">
+    <div class="fed-row" id="fed-nodes"></div>
+    <div class="fed-arrow">MODEL WEIGHTS / STANDARDISED INTELLIGENCE ONLY</div>
+    <div class="fed-layer">FEDERATED INTELLIGENCE LAYER</div>
+    <div class="fed-arrow">AGGREGATED</div>
+    <div class="fed-out">SHARED PREDICTIVE KNOWLEDGE</div>
+    <p class="dim" style="font-size:12px;max-width:640px;text-align:center">Each country keeps sensitive raw datasets within its borders and trains a local model on national data. Only approved model updates and standardised event intelligence would be exchanged. No federated training infrastructure is running in this prototype.</p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: brics-airwatch
+    env: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DJANGO_SECRET_KEY
+        generateValue: true

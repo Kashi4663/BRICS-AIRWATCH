@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid g2">
+  <div class="panel"><div class="panel-h"><h3>Integration Status</h3><span class="eyebrow">keys never leave the server</span></div>
+    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Service</th><th>Mode</th><th>Environment variable</th></tr></thead><tbody>
+    {% for s in services %}<tr><td>{{ s.name }}</td><td><span class="badge-src {% if s.mode == 'LIVE' %}live{% else %}demo{% endif %}">{{ s.mode }}</span></td><td class="mono dim" style="font-size:11px">{{ s.env }}</td></tr>{% endfor %}
+    </tbody></table></div></div>
+  <div class="panel"><div class="panel-h"><h3>Account</h3></div><div class="panel-b" style="display:grid;gap:10px">
+    {% if user.is_authenticated %}<div class="kv"><dt>User</dt><dd>{{ user.username }}</dd><dt>Role</dt><dd class="accent">{{ USER_ROLE|upper }}</dd></div>
+    <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="btn">Sign out</button></form>
+    {% else %}<p class="muted">Not signed in (guest / citizen access).</p><a class="btn primary" href="/login/?next=/settings/">Sign in</a>{% endif %}
+    <div class="eyebrow" style="margin-top:10px">Data labels</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge-src live">LIVE DATA</span><span class="badge-src demo">DEMO DATA</span><span class="badge-src sim">SIMULATED PREDICTION</span><span class="badge-src ai">AI ASSESSMENT</span></div>
+  </div></div>
+</div>
+<div class="panel"><div class="panel-h"><h3>Cloud Architecture</h3></div><div class="panel-b" style="display:grid;gap:10px;font-size:13px">
+  <div class="traj"><span>Citizen app / Web</span><i>→</i><span>Cloud Run · Django + DRF</span><i>→</i><span class="t">Gemini · Vertex AI</span><i>→</i><span>BigQuery</span></div>
+  <div class="traj"><span>Earth Engine</span><i>→</i><span>Cloud Functions (ETL)</span><i>→</i><span>BigQuery</span><i>→</i><span>Vertex AI training</span></div>
+  <div class="traj"><span>Firebase Auth</span><i>·</i><span>Firestore live reports</span><i>·</i><span>FCM authority alerts</span></div>
+  <div class="traj"><span>data.gov.in · IMD · ISRO Bhuvan · FAO · WHO</span><i>→</i><span>Ingestion adapters (config-driven)</span></div>
+</div></div>
+<div class="panel"><div class="panel-h"><h3>BigQuery Schema</h3><span class="eyebrow">python manage.py bigquery_schema</span></div><div class="panel-b grid g3">
+  {% for table, cols in schemas.items %}<div><div class="mono accent" style="font-size:12px;margin-bottom:6px">{{ table }}</div>{% for c in cols %}<div class="mono dim" style="font-size:11px">{{ c.name }} <span style="color:#52525b">{{ c.type }}</span></div>{% endfor %}</div>{% endfor %}
+</div></div>
+{% endblock %}
